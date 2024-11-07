@@ -183,40 +183,11 @@
         "circle_button_background": "#ffffff",
         "circle_button_text_color": "#1c1c1c"
       }
-    },
-    "featured_collections_Yk6KQG": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_kJURLm": {
-          "type": "collection",
-          "settings": {
-            "collection": "kimono",
-            "products_count": 8,
-            "title": "",
-            "link_url": "",
-            "link_text": "explore mais"
-          }
-        }
-      },
-      "block_order": [
-        "collection_kJURLm"
-      ],
-      "settings": {
-        "separate_section_with_border": true,
-        "hide_product_information": false,
-        "stack_products": false,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "horizontal_spacing_factor": 1,
-        "vertical_spacing_factor": 1,
-        "subheading": ""
-      }
     }
   },
   "order": [
     "slideshow",
     "featured_collections_KCdPVa",
-    "collection_list_LNQHQ7",
-    "featured_collections_Yk6KQG"
+    "collection_list_LNQHQ7"
   ]
 }
