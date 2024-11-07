@@ -19,7 +19,7 @@
             "title": "Image slide",
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
-            "content_max_width": 780,
+            "content_max_width": 1200,
             "button_1_text": "",
             "button_1_link": "",
             "button_1_style": "solid",
@@ -40,11 +40,11 @@
         "image_CnXhrm": {
           "type": "image",
           "settings": {
-            "subheading": "Tell your story",
-            "title": "Image slide",
+            "subheading": "",
+            "title": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
-            "content_max_width": 780,
+            "content_max_width": 1200,
             "button_1_text": "",
             "button_1_link": "",
             "button_1_style": "solid",
