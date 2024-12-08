@@ -117,7 +117,7 @@
             "content_position": "place-self-end-start text-start",
             "subheading": "",
             "title": "",
-            "button_text": "Casacos",
+            "button_text": "Blusas",
             "button_link": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -129,7 +129,8 @@
         "collection_kgFQjL": {
           "type": "collection",
           "settings": {
-            "collection": "vestido",
+            "collection": "vestidos-casuais",
+            "image": "shopify://shop_images/Design_sem_nome_42.png",
             "expand_collection": false,
             "content_position": "place-self-end-start text-start",
             "subheading": "",
@@ -146,12 +147,13 @@
         "collection_WWrbn6": {
           "type": "collection",
           "settings": {
-            "collection": "kimono",
+            "collection": "calca",
+            "image": "shopify://shop_images/60_27cd0f68-832e-475a-b77b-b6eba36e6d7f.png",
             "expand_collection": false,
             "content_position": "place-self-end-start text-start",
             "subheading": "",
             "title": "",
-            "button_text": "kimonos",
+            "button_text": "Calças",
             "button_link": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
