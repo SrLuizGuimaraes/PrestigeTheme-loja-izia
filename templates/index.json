@@ -15,6 +15,7 @@
         "image_3trHFG": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/SHOP_NOW.png",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-center text-center",
@@ -40,6 +41,7 @@
         "image_CnXhrm": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/SHOP_NOW.png",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-center text-center",
