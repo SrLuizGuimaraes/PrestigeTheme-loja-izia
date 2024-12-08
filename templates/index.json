@@ -174,42 +174,12 @@
         "circle_button_background": "#ffffff",
         "circle_button_text_color": "#1c1c1c"
       }
-    },
-    "image_with_text_xWpdVr": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_BMELpd": {
-          "type": "heading",
-          "settings": {
-            "text": "SOBRE A IZIA",
-            "heading_tag": "h1"
-          }
-        },
-        "richtext_yAtcib": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Fundada por Vitória Cunha, a Izia sempre fez parte dos seus sonhos, desde a infância, quando brincava no closet da mãe, se transformando através das peças. Esse poder de transformação sempre a encantou. </p><p>O nome <em>Izia</em> vem da expressão \"easy chic\", trazendo como essência a versatilidade e a elegância de forma descomplicada, para que você se sinta linda, confiante e segura de si. Afinal, o mais importante é se celebrar.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_BMELpd",
-        "richtext_yAtcib"
-      ],
-      "settings": {
-        "separate_section_with_border": true,
-        "reveal_on_scroll": true,
-        "image_position": "start",
-        "content_width": "sm",
-        "remove_vertical_spacing": true
-      }
     }
   },
   "order": [
     "slideshow",
     "featured_collections_MAne6q",
     "featured_collections_KCdPVa",
-    "collection_list_LNQHQ7",
-    "image_with_text_xWpdVr"
+    "collection_list_LNQHQ7"
   ]
 }
