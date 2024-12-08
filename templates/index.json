@@ -80,21 +80,6 @@
     },
     "featured_collections_KCdPVa": {
       "type": "featured-collections",
-      "blocks": {
-        "collection_XU99Aw": {
-          "type": "collection",
-          "settings": {
-            "collection": "frontpage",
-            "products_count": 8,
-            "title": "",
-            "link_url": "",
-            "link_text": "Ver todos"
-          }
-        }
-      },
-      "block_order": [
-        "collection_XU99Aw"
-      ],
       "settings": {
         "separate_section_with_border": true,
         "hide_product_information": false,
@@ -109,23 +94,6 @@
     "collection_list_LNQHQ7": {
       "type": "collection-list",
       "blocks": {
-        "collection_CebGgU": {
-          "type": "collection",
-          "settings": {
-            "collection": "blusa",
-            "expand_collection": false,
-            "content_position": "place-self-end-start text-start",
-            "subheading": "",
-            "title": "",
-            "button_text": "Blusas",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "button_background": "",
-            "button_text_color": ""
-          }
-        },
         "collection_kgFQjL": {
           "type": "collection",
           "settings": {
@@ -161,12 +129,29 @@
             "button_background": "",
             "button_text_color": ""
           }
+        },
+        "collection_CebGgU": {
+          "type": "collection",
+          "settings": {
+            "collection": "blusa",
+            "expand_collection": false,
+            "content_position": "place-self-end-start text-start",
+            "subheading": "",
+            "title": "",
+            "button_text": "Blusas",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "button_background": "",
+            "button_text_color": ""
+          }
         }
       },
       "block_order": [
-        "collection_CebGgU",
         "collection_kgFQjL",
-        "collection_WWrbn6"
+        "collection_WWrbn6",
+        "collection_CebGgU"
       ],
       "custom_css": [
         "{margin-top: 2%;}",
@@ -180,7 +165,7 @@
         "stack_collections": true,
         "collections_per_row_desktop": 3,
         "subheading": "",
-        "title": "Caterorias",
+        "title": "",
         "content": "",
         "circle_button_background": "#ffffff",
         "circle_button_text_color": "#1c1c1c"
