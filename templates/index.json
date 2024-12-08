@@ -208,10 +208,39 @@
         "content_width": "sm",
         "remove_vertical_spacing": true
       }
+    },
+    "featured_collections_MAne6q": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_RKyV3c": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-seller",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_RKyV3c"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
     }
   },
   "order": [
     "slideshow",
+    "featured_collections_MAne6q",
     "featured_collections_KCdPVa",
     "collection_list_LNQHQ7",
     "image_with_text_xWpdVr"
