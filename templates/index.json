@@ -116,6 +116,23 @@
             "button_text_color": ""
           }
         },
+        "collection_CebGgU": {
+          "type": "collection",
+          "settings": {
+            "collection": "blusa",
+            "expand_collection": false,
+            "content_position": "place-self-end-start text-start",
+            "subheading": "",
+            "title": "",
+            "button_text": "Blusas",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
         "collection_WWrbn6": {
           "type": "collection",
           "settings": {
@@ -133,29 +150,12 @@
             "button_background": "",
             "button_text_color": ""
           }
-        },
-        "collection_CebGgU": {
-          "type": "collection",
-          "settings": {
-            "collection": "blusa",
-            "expand_collection": false,
-            "content_position": "place-self-end-start text-start",
-            "subheading": "",
-            "title": "",
-            "button_text": "Blusas",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "button_background": "",
-            "button_text_color": ""
-          }
         }
       },
       "block_order": [
         "collection_kgFQjL",
-        "collection_WWrbn6",
-        "collection_CebGgU"
+        "collection_CebGgU",
+        "collection_WWrbn6"
       ],
       "custom_css": [
         "{margin-top: 2%;}",
