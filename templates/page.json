@@ -44,13 +44,20 @@
           "settings": {
             "content": "<p>A marca reflete um estilo de vida leve e confiante, em sintonia com as<br/>necessidades de um mundo em constante mudança.<br/></p>"
           }
+        },
+        "page_QamaQw": {
+          "type": "page",
+          "settings": {
+            "page": ""
+          }
         }
       },
       "block_order": [
         "subheading_aABA3m",
         "heading_ebqz3H",
         "richtext_M3W3ig",
-        "richtext_BKkpJp"
+        "richtext_BKkpJp",
+        "page_QamaQw"
       ],
       "settings": {
         "separate_section_with_border": true,
@@ -58,7 +65,7 @@
         "reveal_on_scroll": true,
         "image_position": "start",
         "content_width": "sm",
-        "remove_vertical_spacing": true
+        "remove_vertical_spacing": false
       }
     },
     "media_grid_TEJaiK": {
@@ -110,7 +117,7 @@
         "image_QgGGgD"
       ],
       "settings": {
-        "separate_section_with_border": true,
+        "separate_section_with_border": false,
         "desktop_row_height": 290,
         "mobile_row_height": 180,
         "section_width": "lg",
