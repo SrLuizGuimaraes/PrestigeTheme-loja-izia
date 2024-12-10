@@ -30,7 +30,7 @@
           "type": "heading",
           "settings": {
             "text": "EASY TO WEAR & HARD TO FORGET",
-            "heading_tag": "h1"
+            "heading_tag": "h3"
           }
         },
         "richtext_M3W3ig": {
@@ -60,9 +60,9 @@
         "page_QamaQw"
       ],
       "settings": {
-        "separate_section_with_border": true,
+        "separate_section_with_border": false,
         "image": "shopify://shop_images/IMGL7021_1.webp",
-        "reveal_on_scroll": true,
+        "reveal_on_scroll": false,
         "image_position": "start",
         "content_width": "sm",
         "remove_vertical_spacing": false
