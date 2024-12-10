@@ -54,6 +54,7 @@
       ],
       "settings": {
         "separate_section_with_border": true,
+        "image": "shopify://shop_images/IMGL7021_1.webp",
         "reveal_on_scroll": true,
         "image_position": "start",
         "content_width": "sm",
@@ -66,6 +67,7 @@
         "image_riH3Vf": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMGL7326_1.webp",
             "column_count": "6",
             "row_count": 2,
             "title": "",
@@ -85,6 +87,7 @@
         "image_QgGGgD": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMGL7103_1.webp",
             "column_count": "6",
             "row_count": 2,
             "title": "",
