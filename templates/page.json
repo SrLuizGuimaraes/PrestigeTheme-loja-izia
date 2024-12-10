@@ -13,7 +13,7 @@
       "type": "main-page",
       "settings": {
         "show_title": false,
-        "page_width": "xs"
+        "page_width": "full"
       }
     }
   },
