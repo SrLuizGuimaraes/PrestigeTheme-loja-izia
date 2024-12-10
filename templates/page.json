@@ -42,7 +42,7 @@
         "richtext_BKkpJp": {
           "type": "richtext",
           "settings": {
-            "content": "<p>A marca reflete um estilo de vida leve e confiante, em sintonia com as<br/>necessidades de um mundo em constante mudança.<br/>.</p>"
+            "content": "<p>A marca reflete um estilo de vida leve e confiante, em sintonia com as<br/>necessidades de um mundo em constante mudança.<br/></p>"
           }
         }
       },
@@ -113,7 +113,7 @@
         "section_width": "lg",
         "spacing": "md",
         "subheading": "",
-        "title": "Media grid",
+        "title": "",
         "content": "",
         "background": "",
         "text_color": ""
