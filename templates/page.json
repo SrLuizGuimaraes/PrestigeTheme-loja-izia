@@ -11,8 +11,9 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
-        "show_title": true,
+        "show_title": false,
         "page_width": "xs"
       }
     },
