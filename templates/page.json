@@ -27,6 +27,7 @@
         },
         "heading_ebqz3H": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "text": "EASY TO WEAR & HARD TO FORGET",
             "heading_tag": "h1"
@@ -34,14 +35,22 @@
         },
         "richtext_M3W3ig": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "content": "<h5>A Izia se inspira no conceito “easy chic”, trazendo sofisticação e elegância de<br/>maneira descomplicada e criativa. Com o objetivo de valorizar a<br/>individualidade e proporcionar confiança, a Izia cria peças modernas que<br/>destacam a essência de quem as veste.</h5>"
           }
         },
         "richtext_BKkpJp": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "content": "<h5>A marca reflete um estilo de vida leve e confiante, em sintonia com as<br/>necessidades de um mundo em constante mudança.<br/></h5>"
+          }
+        },
+        "page_8XkJEP": {
+          "type": "page",
+          "settings": {
+            "page": "about-us"
           }
         }
       },
@@ -49,14 +58,15 @@
         "subheading_aABA3m",
         "heading_ebqz3H",
         "richtext_M3W3ig",
-        "richtext_BKkpJp"
+        "richtext_BKkpJp",
+        "page_8XkJEP"
       ],
       "settings": {
         "separate_section_with_border": false,
         "image": "shopify://shop_images/IMGL7021_1.webp",
         "reveal_on_scroll": false,
         "image_position": "start",
-        "content_width": "lg",
+        "content_width": "sm",
         "remove_vertical_spacing": false
       }
     },
