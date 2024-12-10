@@ -1,1 +1,127 @@
-{"sections":{"main":{"type":"main-page","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "image_with_text_3xVrEb": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_aABA3m": {
+          "type": "subheading",
+          "settings": {
+            "text": "About us"
+          }
+        },
+        "heading_ebqz3H": {
+          "type": "heading",
+          "settings": {
+            "text": "EASY TO WEAR & HARD TO FORGET",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_M3W3ig": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>A Izia se inspira no conceito “easy chic”, trazendo sofisticação e elegância de<br/>maneira descomplicada e criativa. Com o objetivo de valorizar a<br/>individualidade e proporcionar confiança, a Izia cria peças modernas que<br/>destacam a essência de quem as veste.</p>"
+          }
+        },
+        "richtext_BKkpJp": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>A marca reflete um estilo de vida leve e confiante, em sintonia com as<br/>necessidades de um mundo em constante mudança.<br/>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_aABA3m",
+        "heading_ebqz3H",
+        "richtext_M3W3ig",
+        "richtext_BKkpJp"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "media_grid_TEJaiK": {
+      "type": "media-grid",
+      "blocks": {
+        "image_riH3Vf": {
+          "type": "image",
+          "settings": {
+            "column_count": "6",
+            "row_count": 2,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "button_background": "",
+            "button_text_color": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_QgGGgD": {
+          "type": "image",
+          "settings": {
+            "column_count": "6",
+            "row_count": 2,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "button_background": "",
+            "button_text_color": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_riH3Vf",
+        "image_QgGGgD"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 180,
+        "section_width": "lg",
+        "spacing": "md",
+        "subheading": "",
+        "title": "Media grid",
+        "content": "",
+        "background": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_3xVrEb",
+    "media_grid_TEJaiK"
+  ]
+}
