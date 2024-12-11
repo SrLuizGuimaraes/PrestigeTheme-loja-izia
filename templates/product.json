@@ -71,16 +71,6 @@
             "collapse_content": false,
             "show_below_gallery": false
           }
-        },
-        "complementary_products": {
-          "type": "complementary_products",
-          "settings": {
-            "title": "Pairs well with",
-            "products_count": 2,
-            "show_below_gallery": true,
-            "stack_products": false,
-            "show_quick_buy": true
-          }
         }
       },
       "block_order": [
@@ -92,8 +82,7 @@
         "buy_buttons",
         "payment_terms",
         "separator",
-        "description",
-        "complementary_products"
+        "description"
       ],
       "settings": {
         "container_size": "lg",
