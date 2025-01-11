@@ -37,7 +37,14 @@
     "social_whatsapp": "https://wa.me/5531995007951",
     "favicon": "shopify://shop_images/FIv_e253261e-2b3c-4dfb-9a51-42e330b87ad4.png",
     "heading_color": "#1c1c1c",
-    "content_for_index": []
+    "content_for_index": [],
+    "blocks": {
+      "11349500561483629931": {
+        "type": "shopify://apps/notify-me/blocks/app-embed/b399b727-6c85-44fc-9e21-63114bd72054",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Allure": {
