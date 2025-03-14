@@ -32,8 +32,8 @@
         "links_7jbzp7": {
           "type": "links",
           "settings": {
-            "menu": "footer",
-            "show_menu_title": true
+            "menu": "rodape",
+            "show_menu_title": false
           }
         }
       },
