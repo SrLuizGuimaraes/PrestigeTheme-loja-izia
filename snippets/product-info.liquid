@@ -249,6 +249,37 @@ Supported variables
                       <span>{{ product.metafields[metafield_namespace][metafield_key].value | escape }}</span>
                     </div>
                   {%- endif -%}
+
+                  <div class="variant-picker__option-values h-stack gap-2.5 wrap">
+                    {%- liquid
+                      for product_variation in block.settings.products
+                        assign value = product_variation.metafields[metafield_namespace][metafield_key].value
+
+                        if product_variation == product
+                          assign selected = true
+                        else
+                          assign selected = false
+                        endif
+
+                        case block.settings.color_selector_type
+                          when 'color'
+                            render 'swatch' with 'color', href: product_variation.url, value: value, selected: selected
+
+                          when 'variant'
+                            render 'swatch' with 'media', href: product_variation.url, value: value, media: product_variation.featured_media, selected: selected
+
+                          when 'block'
+                            render 'swatch' with 'block', href: product_variation.url, value: value, selected: selected
+
+                          when 'block_swatch'
+                            render 'swatch' with 'block', href: product_variation.url, value: value, selected: selected, show_color: true
+                        endcase
+                      endfor
+                    -%}
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
 <style>
   .td-frete-dinamico {
     padding: 15px 10px;
@@ -504,37 +535,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 </script>
-
-                  <div class="variant-picker__option-values h-stack gap-2.5 wrap">
-                    {%- liquid
-                      for product_variation in block.settings.products
-                        assign value = product_variation.metafields[metafield_namespace][metafield_key].value
-
-                        if product_variation == product
-                          assign selected = true
-                        else
-                          assign selected = false
-                        endif
-
-                        case block.settings.color_selector_type
-                          when 'color'
-                            render 'swatch' with 'color', href: product_variation.url, value: value, selected: selected
-
-                          when 'variant'
-                            render 'swatch' with 'media', href: product_variation.url, value: value, media: product_variation.featured_media, selected: selected
-
-                          when 'block'
-                            render 'swatch' with 'block', href: product_variation.url, value: value, selected: selected
-
-                          when 'block_swatch'
-                            render 'swatch' with 'block', href: product_variation.url, value: value, selected: selected, show_color: true
-                        endcase
-                      endfor
-                    -%}
-                  </div>
-                </div>
-              </div>
-            {%- endif -%}
 
           {%- when 'line_item_property' -%}
             {%- if block.settings.label != blank -%}
