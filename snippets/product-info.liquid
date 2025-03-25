@@ -371,6 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const zipInput = wrapper.querySelector('#td-frete-dinamico-cep');
         const zip = zipInput.value;
 
+
         wrapper.querySelector('#frete-danger').innerHTML = '';
         wrapper.querySelector('#frete-danger').setAttribute('hidden', 'hidden');
         wrapper.querySelector('#frete-aviso').innerHTML = '';
@@ -392,83 +393,167 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            await calculateShippingRates(cepUnmasked, wrapper);
+            await tryCalculateShippingRates(btn, wrapper, cepUnmasked);
         } catch (error) {
-            console.error("Erro ao calcular frete:", error);
-            wrapper.querySelector('#frete-danger').innerHTML = `
-              <p class="mb-0">Erro ao calcular o frete. Tente novamente.</p>
-            `;
-            wrapper.querySelector('#frete-danger').removeAttribute('hidden');
             btn.innerHTML = btn.dataset.text;
         }
     };
 
-    async function calculateShippingRates(cepUnmasked, wrapper) {
-        const melhorEnvioUrl = "https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate";
-        const token = "SEU_TOKEN_AQUI"; // 🔥 Substitua pelo seu token de autenticação
 
-        const body = {
-            from: { postal_code: "01001-000" }, // CEP de origem (ajuste conforme necessário)
-            to: { postal_code: cepUnmasked },   // CEP de destino (digitado pelo usuário)
-            package: {
-                width: 20,
-                height: 20,
-                length: 20,
-                weight: 1
+    async function tryCalculateShippingRates(btn, wrapper, cepUnmasked) {
+        const country = 'BR';
+        const brasilApiUrl = `https://brasilapi.com.br/api/cep/v1/${cepUnmasked}`;
+
+        let data;
+        try {
+            const response = await fetch(brasilApiUrl);
+
+            if (response.ok) {
+                data = await response.json();
+            } else {
+                throw new Error("Erro ao buscar CEP na BrasilAPI");
             }
-        };
-
-        const response = await fetch(melhorEnvioUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(body)
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro ao consultar a API do Melhor Envio");
-        }
-
-        const data = await response.json();
-
-        if (data.length === 0) {
+        } catch (error) {
             wrapper.querySelector('#frete-aviso').innerHTML = `
-              <p class="mb-0">Nenhuma opção de frete encontrada para este CEP.</p>
+              <p class="mb-0">CEP não encontrado.</p>
             `;
             wrapper.querySelector('#frete-aviso').removeAttribute('hidden');
+            btn.innerHTML = btn.dataset.text;
             return;
         }
 
-        let ratesHtml = '<p>Opções de frete disponíveis:</p>';
-        data.forEach(rate => {
-            const formattedPrice = formatCurrency(rate.price);
-            ratesHtml += `<div><strong>- ${rate.company.name} (${rate.name})</strong>: ${formattedPrice}, entrega em ${rate.delivery_time} dias</div>`;
-        });
+        const formattedLocation = formatLocation(data);
+        wrapper.querySelector('#frete-sucesso').innerHTML = `
+          <p class="td-frete-dinamico-location"><strong>${formattedLocation}</strong></p>
+        `;
 
-        wrapper.querySelector('#frete-sucesso').innerHTML = ratesHtml;
-        wrapper.querySelector('#frete-sucesso').removeAttribute('hidden');
+        const province = data.state;
+
+
+        const cartResponse = await fetch('/cart.js', { method: 'GET' });
+        const cartData = await cartResponse.json();
+
+        const originalItems = cartData.items || [];
+        const hasItems = originalItems.length > 0;
+
+        if (hasItems) {
+            const backupCart = originalItems.map(item => ({
+                id: item.variant_id,
+                quantity: item.quantity,
+            }));
+
+            await fetch('/cart/clear.js', { method: 'POST' });
+
+            await addTemporaryProduct();
+
+            await calculateShippingRates(cepUnmasked, country, province, wrapper);
+
+            await fetch('/cart/clear.js', { method: 'POST' });
+
+            for (const item of backupCart) {
+                await fetch('/cart/add.js', {
+                    method: 'POST',
+                    body: JSON.stringify({ id: item.id, quantity: item.quantity }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+            }
+        } else {
+            await addTemporaryProduct();
+
+            await calculateShippingRates(cepUnmasked, country, province, wrapper);
+
+            await fetch('/cart/clear.js', { method: 'POST' });
+        }
+
+        btn.innerHTML = btn.dataset.text;
     }
+
+
+    async function addTemporaryProduct() {
+      const formElement = document.querySelector('form[action*="/cart/add"]');
+      const formData = getFormData(formElement);
+
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+      });
+    }
+
+
+    async function calculateShippingRates(cepUnmasked, country, province, wrapper) {
+      const ratesUrl = `/cart/shipping_rates.json?shipping_address[zip]=${cepUnmasked}&shipping_address[country]=${country}&shipping_address[province]=${province}`;
+
+      const ratesResponse = await fetch(ratesUrl, { method: 'GET' });
+      const ratesData = await ratesResponse.json();
+
+      if (ratesResponse.ok && ratesData.shipping_rates.length > 0) {
+        let ratesHtml = '';
+        ratesData.shipping_rates.forEach(rate => {
+          const formattedPrice =
+            rate.price === 0 ? 'Grátis' : formatCurrency(rate.price);
+          const deliveryDays =
+            rate.delivery_days && rate.delivery_days.length > 0
+              ? formatDeliveryDays(rate.delivery_days)
+              : '';
+          ratesHtml += `<div><strong>- ${rate.name}</strong>: ${formattedPrice} ${deliveryDays}</div>`;
+        });
+        wrapper.querySelector('#frete-sucesso').innerHTML += `${ratesHtml}`;
+        wrapper.querySelector('#frete-sucesso').removeAttribute('hidden');
+      } else {
+        wrapper.querySelector('#frete-aviso').innerHTML = `
+          <p class="mb-0">Não foi possível encontrar opções de frete para o CEP informado.</p>
+        `;
+        wrapper.querySelector('#frete-aviso').removeAttribute('hidden');
+      }
+    }
+
+
+    function formatLocation(data) {
+      return `${data.city} - ${data.neighborhood} - ${data.street}`;
+    }
+
+
+    function formatDeliveryDays(deliveryDays) {
+      const lastDay = deliveryDays[deliveryDays.length - 1];
+      return lastDay === 1
+        ? '- 1 dia útil'
+        : `- ${lastDay} dias úteis`;
+    }
+
 
     function formatCurrency(value) {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-        }).format(value);
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      }).format(value);
     }
+
+
+    function getFormData(form) {
+      const formData = new FormData(form);
+      const object = {};
+      formData.forEach((value, key) => {
+        object[key] = value;
+      });
+      return object;
+    }
+
 
     const zipInput = document.querySelector('#td-frete-dinamico-cep');
     zipInput.addEventListener('input', function (e) {
-        const value = e.target.value.replace(/\D/g, '');
-        e.target.value =
-            value.length > 5
-                ? `${value.slice(0, 5)}-${value.slice(5, 8)}`
-                : value;
+      const value = e.target.value.replace(/\D/g, '');
+      e.target.value =
+        value.length > 5
+          ? `${value.slice(0, 5)}-${value.slice(5, 8)}`
+          : value;
     });
-
-});
+  });
 </script>
 
 
