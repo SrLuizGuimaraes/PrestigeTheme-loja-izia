@@ -280,6 +280,81 @@ Supported variables
                 </div>
               </div>
             {%- endif -%}
+<style>
+  /* Importando a fonte Montserrat Light do Google Fonts =======================FRETE PERSONALIZADO=========================================== */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+  .td-frete-dinamico {
+    padding: 15px 10px;
+    {% if settings.frete_dinamico_borda %}border: solid 1px #e8e8e8;{% endif %}
+    border-radius: 10px;
+    margin: {{ settings.frete_dinamico_spacetop }}px 0 {{ settings.frete_dinamico_spacebottom }}px;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+  .td-frete-dinamico-titulo {
+    text-align: center; 
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+  #td-frete-dinamico-cep {
+    height: 40px;
+    font-size: 15px;
+    padding: 0 1rem;
+    width: 50%;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: none !important;
+    outline: none !important;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+  .td-frete-dinamico-content {
+    display: flex;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+  #td-frete-dinamico-btn {
+    height: 40px; 
+    padding: .5rem;
+    width: 50%;
+    background: {{ settings.frete_dinamico_btn }};
+    color:white;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+  .td-frete-dinamico-result {
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+  .td-frete-dinamico-location {
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif; /* Aplicando a fonte Montserrat Light */
+    font-weight: 300; /* Definindo o peso da fonte como Light */
+  }
+</style>
+<div class="td-frete-dinamico">
+  <div class="td-frete-dinamico-titulo">{{ settings.frete_dinamico_titulo }}</div>
+      <div class="td-frete-dinamico-content">
+        <input id="td-frete-dinamico-cep" type="text" placeholder="00000-000" autocomplete="CEP" wfd-id="id9">
+        <button id="td-frete-dinamico-btn" data-text="Calcular" onclick="generateShippingRates(this)">Calcular</button>
+      </div>
+      <div class="td-frete-dinamico-result">
+        <div id="frete-danger" class="alert alert-danger" role="alert" hidden="hidden"></div>
+        <div id="frete-aviso" class="alert alert-warning" role="alert" hidden="hidden"></div>
+        <div id="frete-sucesso" class="alert alert-success" role="alert" hidden="hidden"></div>
+      </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
