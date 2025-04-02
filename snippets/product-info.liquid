@@ -281,7 +281,6 @@ Supported variables
               </div>
             {%- endif -%}
 <style>
-  /* Importando a fonte Montserrat Light do Google Fonts */
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
   .td-frete-dinamico {
@@ -293,9 +292,11 @@ Supported variables
     font-weight: 300;
   }
   .td-frete-dinamico-titulo {
-    text-align: center;
+    text-align: center; 
     margin-bottom: 10px;
     font-size: 17px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
   }
   #td-frete-dinamico-cep {
@@ -305,89 +306,100 @@ Supported variables
     width: 50%;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
+    box-shadow: none !important;
+    outline: none !important;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
   }
   .td-frete-dinamico-content {
     display: flex;
     gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
   }
   #td-frete-dinamico-btn {
-    height: 40px;
+    height: 40px; 
     padding: .5rem;
     width: 50%;
     background: {{ settings.frete_dinamico_btn }};
     color:white;
     border: none;
+    outline: none;
+    box-shadow: none;
     border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+  .td-frete-dinamico-result {
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+  .td-frete-dinamico-location {
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
   }
 </style>
 
 <div class="td-frete-dinamico">
   <div class="td-frete-dinamico-titulo">{{ settings.frete_dinamico_titulo }}</div>
   <div class="td-frete-dinamico-content">
-    <input id="td-frete-dinamico-cep" type="text" placeholder="00000-000">
+    <input id="td-frete-dinamico-cep" type="text" placeholder="00000-000" autocomplete="CEP">
     <button id="td-frete-dinamico-btn" data-text="Calcular" onclick="generateShippingRates(this)">Calcular</button>
   </div>
   <div class="td-frete-dinamico-result">
-    <div id="frete-danger" class="alert alert-danger" hidden></div>
-    <div id="frete-aviso" class="alert alert-warning" hidden></div>
-    <div id="frete-sucesso" class="alert alert-success" hidden></div>
+    <div id="frete-danger" class="alert alert-danger" role="alert" hidden="hidden"></div>
+    <div id="frete-aviso" class="alert alert-warning" role="alert" hidden="hidden"></div>
+    <div id="frete-sucesso" class="alert alert-success" role="alert" hidden="hidden"></div>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     window.generateShippingRates = async (btn) => {
-        btn.innerHTML = '<div class="spinner-border spinner-border-sm"></div>';
-        const zip = document.querySelector('#td-frete-dinamico-cep').value.replace(/\D/g, '');
+        btn.innerHTML = '<div class="spinner-border spinner-border-sm" role="status" style="width: 1rem; height: 1rem"></div>';
+        
+        const wrapper = document.querySelector('.td-frete-dinamico');
+        const zipInput = wrapper.querySelector('#td-frete-dinamico-cep');
+        const zip = zipInput.value.replace(/\D/g, '');
+
         if (!/^[0-9]{8}$/.test(zip)) {
-            document.querySelector('#frete-aviso').innerHTML = '<p>Formato de CEP Inválido.</p>';
-            document.querySelector('#frete-aviso').removeAttribute('hidden');
+            wrapper.querySelector('#frete-aviso').innerHTML = '<p class="mb-0">Formato de CEP Inválido.</p>';
+            wrapper.querySelector('#frete-aviso').removeAttribute('hidden');
             btn.innerHTML = btn.dataset.text;
             return;
         }
+
         try {
-            await tryCalculateShippingRates(btn, zip);
+            const response = await fetch(`/cart/shipping_rates.json?shipping_address[zip]=${zip}&shipping_address[country]=BR`);
+            const data = await response.json();
+            
+            if (data.shipping_rates.length > 0) {
+                let ratesHtml = '';
+                data.shipping_rates.forEach(rate => {
+                    let deliveryDays = rate.delivery_days || 0;
+                    if (rate.name.toLowerCase().includes('sedex')) {
+                        deliveryDays = Math.max(deliveryDays - 5, 1);
+                    }
+                    ratesHtml += `<div><strong>- ${rate.name}</strong>: R$${(rate.price / 100).toFixed(2)} - ${deliveryDays} dias úteis</div>`;
+                });
+                wrapper.querySelector('#frete-sucesso').innerHTML = ratesHtml;
+                wrapper.querySelector('#frete-sucesso').removeAttribute('hidden');
+            } else {
+                wrapper.querySelector('#frete-aviso').innerHTML = '<p class="mb-0">Não foi possível encontrar opções de frete para o CEP informado.</p>';
+                wrapper.querySelector('#frete-aviso').removeAttribute('hidden');
+            }
         } catch (error) {
-            btn.innerHTML = btn.dataset.text;
+            wrapper.querySelector('#frete-danger').innerHTML = '<p class="mb-0">Erro ao calcular o frete.</p>';
+            wrapper.querySelector('#frete-danger').removeAttribute('hidden');
         }
-    };
-
-    async function tryCalculateShippingRates(btn, cepUnmasked) {
-        const response = await fetch(`/cart/shipping_rates.json?shipping_address[zip]=${cepUnmasked}&shipping_address[country]=BR`);
-        const data = await response.json();
-
-        const prazoExtra = {
-            "Correios PAC": 0,
-            "Correios Sedex": -5,
-            "Transportadora XPTO": 0,
-            "Jadlog": 0,
-            "FedEx Express": 0,
-            "DHL Rápido": 0
-        };
-
-        if (response.ok && data.shipping_rates.length > 0) {
-            let ratesHtml = '';
-            data.shipping_rates.forEach(rate => {
-                let extraDays = prazoExtra[rate.name] || 0;
-                let totalDays = (rate.delivery_days?.slice(-1)[0] || 0) + extraDays;
-                ratesHtml += `<div><strong>- ${rate.name}</strong>: ${rate.price === 0 ? 'Grátis' : formatCurrency(rate.price)} - ${totalDays} dias úteis</div>`;
-            });
-            document.querySelector('#frete-sucesso').innerHTML += ratesHtml;
-            document.querySelector('#frete-sucesso').removeAttribute('hidden');
-        } else {
-            document.querySelector('#frete-aviso').innerHTML = '<p>Não foi possível encontrar opções de frete para o CEP informado.</p>';
-            document.querySelector('#frete-aviso').removeAttribute('hidden');
-        }
+        
         btn.innerHTML = btn.dataset.text;
-    }
-
-    function formatCurrency(value) {
-        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
-    }
+    };
 });
 </script>
+
 
 
 
