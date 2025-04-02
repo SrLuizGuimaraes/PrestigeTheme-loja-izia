@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function formatDeliveryDays(deliveryDays) {
-      const lastDay = deliveryDays[deliveryDays.length - 1] -5;
+      const lastDay = deliveryDays[deliveryDays.length - 1] ;
       return lastDay === 1
         ? '- 1 dia útil'
         : `- ${lastDay} dias úteis`;
