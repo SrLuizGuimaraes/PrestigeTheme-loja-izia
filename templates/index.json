@@ -15,15 +15,15 @@
         "image_3trHFG": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SHOP_NOW.png",
-            "mobile_image": "shopify://shop_images/SHOP_NOW_1200_x_1600_px.png",
+            "image": "shopify://shop_images/Copia_de_MISTICA.png",
+            "mobile_image": "shopify://shop_images/Copia_de_MISTICA.png",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "content_max_width": 1200,
             "button_1_text": "",
-            "button_1_link": "https://iziastudio.com.br/collections/all",
+            "button_1_link": "shopify://collections/shop-all",
             "button_1_style": "outline",
             "button_1_background": "#ffffff",
             "button_1_text_color": "#000000",
@@ -54,34 +54,6 @@
         "controls_color": "#ffffff"
       }
     },
-    "featured_collections_MAne6q": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection_RKyV3c": {
-          "type": "collection",
-          "settings": {
-            "collection": "best-seller",
-            "products_count": 8,
-            "title": "",
-            "link_url": "",
-            "link_text": "View all"
-          }
-        }
-      },
-      "block_order": [
-        "collection_RKyV3c"
-      ],
-      "settings": {
-        "separate_section_with_border": true,
-        "hide_product_information": false,
-        "stack_products": false,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "horizontal_spacing_factor": 1,
-        "vertical_spacing_factor": 1,
-        "subheading": ""
-      }
-    },
     "featured_collections_KCdPVa": {
       "type": "featured-collections",
       "settings": {
@@ -101,8 +73,8 @@
         "collection_kgFQjL": {
           "type": "collection",
           "settings": {
-            "collection": "vestidos-casuais",
-            "image": "shopify://shop_images/Design_sem_nome_42.png",
+            "collection": "shop-all",
+            "image": "shopify://shop_images/d6ec0f73-2d37-41cf-88d3-feb753dd106f_ffa69105-6675-4040-bb9f-a4502975d2fb.jpg",
             "expand_collection": false,
             "content_position": "place-self-end-start text-start",
             "subheading": "",
@@ -119,13 +91,13 @@
         "collection_WWrbn6": {
           "type": "collection",
           "settings": {
-            "collection": "calca",
-            "image": "shopify://shop_images/60_27cd0f68-832e-475a-b77b-b6eba36e6d7f.png",
+            "collection": "shop-all",
+            "image": "shopify://shop_images/ddbeab05-39ed-4e94-afb0-8b77d5a7a19a.jpg",
             "expand_collection": false,
             "content_position": "place-self-end-start text-start",
             "subheading": "",
             "title": "",
-            "button_text": "Calças",
+            "button_text": "VER TODOS",
             "button_link": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -137,12 +109,13 @@
         "collection_CebGgU": {
           "type": "collection",
           "settings": {
-            "collection": "blusa",
+            "collection": "shop-all",
+            "image": "shopify://shop_images/a612ed80-c801-4adf-9d8f-7922a096fa41.jpg",
             "expand_collection": false,
             "content_position": "place-self-end-start text-start",
             "subheading": "",
             "title": "",
-            "button_text": "Blusas",
+            "button_text": "COLEÇÃO",
             "button_link": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -174,12 +147,40 @@
         "circle_button_background": "#ffffff",
         "circle_button_text_color": "#1c1c1c"
       }
+    },
+    "featured_collections_MAne6q": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_RKyV3c": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-seller",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_RKyV3c"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
     }
   },
   "order": [
     "slideshow",
-    "featured_collections_MAne6q",
     "featured_collections_KCdPVa",
-    "collection_list_LNQHQ7"
+    "collection_list_LNQHQ7",
+    "featured_collections_MAne6q"
   ]
 }
