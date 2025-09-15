@@ -19,10 +19,24 @@
           "settings": {
             "text": "FRETE GRÁTIS NA 1ª COMPRA"
           }
+        },
+        "message_rjniNh": {
+          "type": "message",
+          "settings": {
+            "text": "15% OFF ATÉ 19.09 | CUPOM IZIA15"
+          }
+        },
+        "message_Lnxk4Q": {
+          "type": "message",
+          "settings": {
+            "text": "FRETE GRÁTIS NA 1ª COMPRA"
+          }
         }
       },
       "block_order": [
-        "message-1"
+        "message-1",
+        "message_rjniNh",
+        "message_Lnxk4Q"
       ],
       "settings": {
         "enable_sticky": true,
